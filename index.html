@@ -62,6 +62,7 @@
       color: #fff; margin: 0 12px;
       text-decoration: none; font-weight: 500;
       transition: color 0.3s, transform 0.3s;
+      cursor: pointer;
     }
     header p a:hover {
       color: #ffda79;
@@ -174,19 +175,19 @@
     <h1>Shreyas Shrikant Rangdal</h1>
     <h2><span class="typing">Associate System Administrator | Developer</span></h2>
     <p>
-      <a href="mailto:shreyasrangdal@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a> |
-      <a href="tel:+919175915940"><i class="fa-solid fa-phone"></i> Call</a> |
+      <a href="#" class="copy-btn" data-copy="shreyasrangdal@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a> |
+      <a href="#" class="copy-btn" data-copy="+919175915940"><i class="fa-solid fa-phone"></i> Call</a> |
       <a href="https://www.linkedin.com/in/shreyas-shrikant-rangdal" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
     </p>
 
     <!-- ✅ View & Download CV Buttons -->
     <div style="margin-top:25px;">
       <!-- View CV -->
-      <a href="SHREYAS_SHRIKANT_RANGDAL.pdf" target="_blank" class="cv-btn" style="margin-right:15px;">
+      <a href="assets/SHREYAS_SHRIKANT_RANGDAL.pdf" target="_blank" class="cv-btn" style="margin-right:15px;">
         <i class="fa-solid fa-eye"></i> View CV
       </a>
       <!-- Download CV -->
-      <a href="SHREYAS_SHRIKANT_RANGDAL.pdf" download class="cv-btn">
+      <a href="assets/SHREYAS_SHRIKANT_RANGDAL.pdf" download class="cv-btn">
         <i class="fa-solid fa-download"></i> Download CV
       </a>
     </div>
@@ -265,6 +266,20 @@
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark");
       toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+
+    // Copy Email / Phone to Clipboard
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const text = btn.getAttribute('data-copy');
+        navigator.clipboard.writeText(text).then(() => {
+          alert(text + " copied to clipboard!");
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+        });
+      });
     });
   </script>
 </body>
